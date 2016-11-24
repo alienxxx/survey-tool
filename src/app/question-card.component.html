@@ -1,8 +1,24 @@
 <md-card>
-	  <p class="mui--text-dark-hint mui--text-subhead">Question {{i+1}}</p>
+	  <p class="mui--text-dark-hint mui--text-subhead">Question {{index+1}}</p>
 	  <p class="mui--text-dark mui--text-headline">{{question.phrase}}</p>
 	  <p class="mui--text-dark-secondary mui--text-body1">{{question.description}}</p>
-	  <p>
-			<md-input placeholder="Suggestion"></md-input>
+	  <br>
+	  <p [ngSwitch]="question.type">
+		<md-input *ngSwitchCase="'Text'" name="question-{{question.id}}" placeholder="Please enter answer here"></md-input>
+
+		<md-input *ngSwitchCase="'Number'" name="question-{{question.id}}" placeholder="Please enter number here"></md-input>
+
+	    <template [ngSwitchCase]="'YesNo'">
+	    	<md-radio-button name="question-{{question.id}}">Yes</md-radio-button>
+	    	<md-radio-button name="question-{{question.id}}">No</md-radio-button>
+	    </template>
+
+		<template [ngSwitchCase]="'MultipleChoiceMultiSelect'">
+			<md-checkbox name="question-{{question.id}}" *ngFor="let possible_answer of question.possible_answers">{{possible_answer}}</md-checkbox>
+		</template>
+
+	    <template [ngSwitchCase]="'MultipleChoiceSingleSelect'">
+	    	<md-radio-button name="question-{{question.id}}" *ngFor="let possible_answer of question.possible_answers">{{possible_answer}}</md-radio-button>
+	    </template>
       </p>
 </md-card>

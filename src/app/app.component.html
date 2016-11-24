@@ -1,43 +1,12 @@
- <md-toolbar color="primary">
-
+<md-toolbar color="primary">
     Survey Tool
-
     <span class="app-toolbar-filler"></span>
     <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
 </md-toolbar>
 
 <div class="app-content">
-
-<question *ngFor="let question of questions; let i = index;" [question]="question" [i]="i"></question>
-
-<md-card>
-	  <p class="mui--text-dark-hint mui--text-subhead">Question 2</p>
-	  <p class="mui--text-dark mui--text-headline">Is this another question?</p>
-	  <p class="mui--text-dark-secondary mui--text-body1">
-	  Here is some further information about the question that might explain more or less longly what is meant.
-	  </p>
-	  <p>
-	      <md-checkbox>Unchecked</md-checkbox>
-	      <md-checkbox [checked]="true">Checked</md-checkbox>
-	      <md-checkbox [indeterminate]="true">Indeterminate</md-checkbox>
-	      <md-checkbox [disabled]="true">Disabled</md-checkbox>
-      </p>
-</md-card>
-
-<md-card>
-	 <p class="mui--text-dark-hint mui--text-subhead">Question 3</p>
-	 <p class="mui--text-dark mui--text-headline">Is this a last question?</p>
-	 <p>
-	     <md-radio-button name="symbol">Alpha</md-radio-button>
-	     <md-radio-button name="symbol">Beta</md-radio-button>
-	     <md-radio-button name="symbol" disabled>Gamma</md-radio-button>      
-     </p>
-	 <p class="mui--text-dark-secondary mui--text-body1"><br/>
-	  Here is some further information about the question that might explain more or less longly what is meant.
-	 </p>
-</md-card>
-
- </div>
+	<question *ngFor="let question of questions; let i = index;" [question]="question" [index]="i"></question>
+</div>
 
 <span class="app-action" [class.m2app-dark]="isDarkTheme">
   <button md-fab><md-icon>check circle</md-icon></button>

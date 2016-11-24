@@ -10,5 +10,5 @@ export class QuestionCardComponent {
 	question: Question
 
 	@Input()
-	i: Int
+	index: number
 }
