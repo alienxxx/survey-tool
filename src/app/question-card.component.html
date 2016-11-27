@@ -4,21 +4,32 @@
 	  <p class="mui--text-dark-secondary mui--text-body1">{{question.description}}</p>
 	  <br>
 	  <p [ngSwitch]="question.type">
-		<md-input *ngSwitchCase="'Text'" name="question-{{question.id}}" placeholder="Please enter answer here"></md-input>
+		<md-input *ngSwitchCase="'Text'" [(ngModel)]="question.answer" 
+			name="question-{{question.id}}" 
+			placeholder="Please enter answer here">
+		</md-input>
 
-		<md-input *ngSwitchCase="'Number'" name="question-{{question.id}}" placeholder="Please enter number here"></md-input>
+		<md-input *ngSwitchCase="'Number'" [(ngModel)]="question.answer" 
+			name="question-{{question.id}}" 
+			placeholder="Please enter number here">
+		</md-input>
 
-	    <template [ngSwitchCase]="'YesNo'">
-	    	<md-radio-button name="question-{{question.id}}">Yes</md-radio-button>
-	    	<md-radio-button name="question-{{question.id}}">No</md-radio-button>
-	    </template>
+	    <md-radio-group *ngSwitchCase="'YesNo'" [(ngModel)]="question.answer">
+	    	<md-radio-button value="yes" name="question-{{question.id}}">Yes</md-radio-button>
+	    	<md-radio-button value="no" name="question-{{question.id}}">No</md-radio-button>
+	    </md-radio-group>
 
 		<template [ngSwitchCase]="'MultipleChoiceMultiSelect'">
-			<md-checkbox name="question-{{question.id}}" *ngFor="let possible_answer of question.possible_answers">{{possible_answer}}</md-checkbox>
+			<md-checkbox *ngFor="let possible_answer of question.possible_answers; let i=index;" [(ngModel)]="question.answer[i]" 
+				name="{{question.id}}">{{possible_answer}}
+			</md-checkbox> 
 		</template>
 
-	    <template [ngSwitchCase]="'MultipleChoiceSingleSelect'">
-	    	<md-radio-button name="question-{{question.id}}" *ngFor="let possible_answer of question.possible_answers">{{possible_answer}}</md-radio-button>
-	    </template>
+	    <md-radio-group *ngSwitchCase="'MultipleChoiceSingleSelect'" [(ngModel)]="question.answer">
+	    	<md-radio-button *ngFor="let possible_answer of question.possible_answers"
+	    		name="question-{{question.id}}"
+	    		value={{possible_answer}}>{{possible_answer}}
+	    	</md-radio-button>
+	    </md-radio-group>
       </p>
 </md-card>

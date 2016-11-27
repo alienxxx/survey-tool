@@ -4,10 +4,14 @@
     <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
 </md-toolbar>
 
-<div class="app-content">
-	<question *ngFor="let question of questions; let i = index;" [question]="question" [index]="i"></question>
-</div>
+{{diagnostic}}
 
-<span class="app-action" [class.m2app-dark]="isDarkTheme">
-  <button md-fab><md-icon>check circle</md-icon></button>
-</span>
+<form>
+	<div class="app-content">
+		<question *ngFor="let question of questions; let i = index;" [question]="question" [index]="i"></question>
+	</div>
+
+	<span class="app-action" [class.m2app-dark]="isDarkTheme">
+	  <button md-fab><md-icon>check circle</md-icon></button>
+	</span>
+</form>
