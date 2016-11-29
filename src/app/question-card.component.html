@@ -11,7 +11,8 @@
 
 		<md-input *ngSwitchCase="'Number'" [(ngModel)]="question.answer" 
 			name="question-{{question.id}}" 
-			placeholder="Please enter number here">
+			placeholder="Please enter number here"
+			pattern="[0-9]*">
 		</md-input>
 
 	    <md-radio-group *ngSwitchCase="'YesNo'" [(ngModel)]="question.answer">

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Question } from './question';
+import { YesNoQuestion, Question } from './question';
 
 @Component({
   selector: 'question',
