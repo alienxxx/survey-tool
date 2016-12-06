@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Question} from './question';
 import { QuestionCardComponent } from './question-card.component'; 
-import { QuestionaireService } from './questionaire.service'; 
+import { QuestionService } from './question.service'; 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [QuestionaireService]
+  providers: [QuestionService]
 })
 export class AppComponent implements OnInit {
   private isDarkTheme: boolean = false
   protected questions: Question[];
 
-  constructor(private questionaireService: QuestionaireService) {}
+  constructor(private questionService: QuestionService) {}
 
   ngOnInit(): void {
-  	this.getQuestions()
-  }
-
-  private getQuestions() {
-    	this.questions = this.questionaireService.getQuestions();
+    this.questionService.getQuestions().then( questions => this.questions = questions );
   }
 
   // TODO: Remove this when we're done
