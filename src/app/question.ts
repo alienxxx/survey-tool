@@ -1,9 +1,11 @@
 export abstract class Question {
-	id: number
+	_id: number
 	readonly type: string
 	phrase: string
 	description?: string
+	answer?: any
 
+	//TODO: Really needed?
 	public static fromJSONObject(jsonObject: any) {
 		let typedObject;
 		switch (jsonObject.type) {
@@ -43,21 +45,21 @@ export abstract class Question {
 export class MultipleChoiceMultiSelectQuestion extends Question {
 	readonly type = "MultipleChoiceMultiSelect"
 	possible_answers: String[]
-	answers: boolean[]
+	//answer?: boolean[]
 }
 
 export class MultipleChoiceSingleSelectQuestion extends Question {
 	readonly type = "MultipleChoiceSingleSelect"
 	possible_answers: String[]
-	answer?: number
+	//answer?: number
 }
 
 export class YesNoQuestion extends Question {
 	readonly type = "YesNo"
-	answer?: boolean
+	//answer?: boolean
 }
 
 export class OpenQuestion<T> extends Question {
 	readonly type = "OpenQuestion"
-	answer?: T
+	//answer?: T
 }
