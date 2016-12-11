@@ -1,7 +1,13 @@
 <md-toolbar color="primary">
     Survey Tool
     <span class="app-toolbar-filler"></span>
-    <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
+	<button md-button [md-menu-trigger-for]="menu">
+		{{department.name}}
+	</button>
+
+	<md-menu #menu="mdMenu">
+		<button md-menu-item *ngFor="let department of departmentsList" (click)="setDepartment(department._id)">{{department.name}}</button>
+	</md-menu>
 </md-toolbar>
 
 {{diagnostic}}
