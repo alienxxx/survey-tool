@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Question } from './model';
 
 @Component({
@@ -11,4 +12,7 @@ export class QuestionCardComponent {
 
 	@Input()
 	index: number
+
+	@Input()
+	form: NgForm
 }

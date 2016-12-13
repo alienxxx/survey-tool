@@ -4,12 +4,12 @@
 	  <p class="mui--text-dark-secondary mui--text-body1">{{question.description}}</p>
 	  <br>
 	  <p [ngSwitch]="question.type">
-		<md-input *ngSwitchCase="'Text'" [(ngModel)]="question.answer" 
+		<md-input *ngSwitchCase="'Text'" [(ngModel)]="question.answer"
 			name="question-{{question.id}}" 
 			placeholder="Please enter answer here">
 		</md-input>
 
-		<md-input *ngSwitchCase="'Number'" [(ngModel)]="question.answer" 
+		<md-input *ngSwitchCase="'Number'" [(ngModel)]="question.answer"
 			name="question-{{question.id}}" 
 			placeholder="Please enter number here"
 			pattern="[0-9]*">
@@ -21,7 +21,7 @@
 	    </md-radio-group>
 
 		<template [ngSwitchCase]="'MultipleChoiceMultiSelect'">
-			<md-checkbox *ngFor="let possible_answer of question.possible_answers; let i=index;" [(ngModel)]="question.answer[i]" 
+			<md-checkbox *ngFor="let possible_answer of question.possible_answers; let i=index;" [(ngModel)]="question.answer[i]"
 				name="{{question.id}}">{{possible_answer}}
 			</md-checkbox> 
 		</template>

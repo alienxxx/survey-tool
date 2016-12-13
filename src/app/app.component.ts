@@ -53,5 +53,5 @@ export class AppComponent implements OnInit {
   }
 
   // TODO: Remove this when we're done
-  //get diagnostic() { return JSON.stringify(this.questions) + JSON.stringify(this.departmentsList); }
+  get diagnostic() { return JSON.stringify(this.questions) + JSON.stringify(this.departmentsList); }
 }
