@@ -1,0 +1,14 @@
+<md-toolbar color="primary">
+    Survey Tool
+    <span class="app-toolbar-filler"></span>
+	<button md-button x-position="before" [md-menu-trigger-for]="menu">
+		{{buttonLabel}}
+	</button>
+
+	<md-menu #menu="mdMenu">
+		<button md-menu-item routerLink="/" *ngFor="let department of departmentList"
+			(click)="setButtonLabel(department.name)"
+			(click)="switchDepartment(department._id)">{{department.name}}</button>
+		<button md-menu-item routerLink="/admin" (click)="setButtonLabel('Administration')">Administration</button>
+	</md-menu>
+</md-toolbar>

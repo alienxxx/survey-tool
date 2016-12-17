@@ -1,6 +1,6 @@
 {
   "name": "survey-tool",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -12,19 +12,19 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^2.1.0",
-    "@angular/compiler": "^2.1.0",
+    "@angular/common": "^2",
+    "@angular/compiler": "^2",
     "@angular/core": "^2.1.0",
     "@angular/forms": "^2.1.0",
     "@angular/http": "^2.1.0",
-    "@angular/material": "^2.0.0-alpha.10",
+    "@angular/material": "^2.0.0-alpha.11",
     "@angular/platform-browser": "^2.1.0",
     "@angular/platform-browser-dynamic": "^2.1.0",
     "@angular/router": "^3.1.0",
     "core-js": "^2.4.1",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "^5.0.0-rc.4",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.6.23"
+    "zone.js": ">=0.6.23"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.1.0",

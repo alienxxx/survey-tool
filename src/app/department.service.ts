@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
+import { Subject } from 'rxjs/Subject';
 
 import { Department, Question, Answer } from './model';
 
@@ -9,13 +10,14 @@ import { Department, Question, Answer } from './model';
 export class DepartmentService {
   	private readonly webServiceUrl = 'http://localhost:3000/departments/';  // URL to web api
   	private headers = new Headers({'Content-Type': 'application/json'});
+  	public departmentId$: Subject<string> = new Subject<string>();
 
 	constructor(private http: Http) {}
 
-	getDepartments(): Promise<[number,string][]> {
+	getDepartments(): Promise<any[]> {
 	    return this.http.get(this.webServiceUrl)
 	               .toPromise()
-	               .then(response => response.json() )
+	               .then(response => response.json())
 	               .catch(this.handleError);
 	}
 
@@ -53,6 +55,10 @@ export class DepartmentService {
 					.toPromise()
 					.then(() => answers)
 					.catch(this.handleError)
+	}
+
+	switchDepartment(departmentId) {
+		this.departmentId$.next(departmentId)
 	}
 
 	private handleError(error: any): Promise<any> {
