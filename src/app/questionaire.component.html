@@ -1,14 +1,9 @@
-<md-tab-group>
-  <md-tab label="Questionaire">
-  {{departmentService.selectedDepartmentId}}
-	<form (ngSubmit)="onSubmit()" #survey="ngForm">
-		<div class="app-content">
-			<question *ngFor="let question of questions; let i = index;" [question]="question" [index]="i"></question>
-		</div>
-
-		<span class="app-action">
-		  <button type="submit" md-fab [disabled]="!survey.form.valid" [disabled]="!survey.form.dirty"><md-icon>check circle</md-icon></button>
-		</span>
-	</form>
-  </md-tab>
-</md-tab-group>
+<form (ngSubmit)="onSubmit()" #survey="ngForm">
+	<div class="app-content">
+		<question *ngFor="let question of questions; let i = index;" [question]="question" [index]="i"></question>
+	</div>
+	
+	<span class="app-action">
+	  <button type="submit" md-fab [disabled]="!survey.form.valid" [disabled]="!survey.form.dirty"><md-icon>check circle</md-icon></button>
+	</span>
+</form>

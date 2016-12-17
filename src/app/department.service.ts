@@ -11,6 +11,7 @@ export class DepartmentService {
   	private readonly webServiceUrl = 'http://localhost:3000/departments/';  // URL to web api
   	private headers = new Headers({'Content-Type': 'application/json'});
   	public departmentId$: Subject<string> = new Subject<string>();
+  	public departmentId: string
 
 	constructor(private http: Http) {}
 
@@ -58,6 +59,7 @@ export class DepartmentService {
 	}
 
 	switchDepartment(departmentId) {
+		this.departmentId = departmentId
 		this.departmentId$.next(departmentId)
 	}
 

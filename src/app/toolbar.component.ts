@@ -9,22 +9,22 @@ import { DepartmentService } from './department.service';
 })
 export class ToolbarComponent implements OnInit {
   private buttonLabel: string
-  private departmentList: any[]
+  private departmentList: {_id:string, name:string}[]
 
   constructor(private departmentService: DepartmentService) {}
 
   ngOnInit(): void {
 	  this.departmentService.getDepartments().then( departments => this.departmentList = departments )
-
-    //TODO: Adapt initial buttonLabel value to called route
-    this.setButtonLabel('Select')
+                                           .then( () => this.departmentService.departmentId$.next(this.departmentList[0]._id) )
+                                           .then( () => this.setButtonLabel(this.departmentList[0].name) )
+                                           .catch( () =>  0 )
   }
 
-  public setButtonLabel(label) {
+  setButtonLabel(label) {
     this.buttonLabel = label
   }
 
-  public switchDepartment(departmentId) {
+  switchDepartment(departmentId) {
     this.departmentService.switchDepartment(departmentId)
   }
 }
