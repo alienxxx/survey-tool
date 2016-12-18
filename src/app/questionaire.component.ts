@@ -8,7 +8,6 @@ import { DepartmentService } from './department.service';
 
 @Component({
   templateUrl: './questionaire.component.html',
-  styleUrls: ['./questionaire.component.css']
 })
 export class QuestionaireComponent implements OnInit, OnDestroy {
   protected department: Department = new Department()

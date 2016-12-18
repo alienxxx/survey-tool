@@ -4,7 +4,6 @@ import { DepartmentService } from './department.service';
 
 @Component({
   selector: 'toolbar',
-  styleUrls: ['./toolbar.component.css'],
   templateUrl: './toolbar.component.html',
 })
 export class ToolbarComponent implements OnInit {
@@ -17,7 +16,7 @@ export class ToolbarComponent implements OnInit {
 	  this.departmentService.getDepartments().then( departments => this.departmentList = departments )
                                            .then( () => this.departmentService.departmentId$.next(this.departmentList[0]._id) )
                                            .then( () => this.setButtonLabel(this.departmentList[0].name) )
-                                           .catch( () =>  0 )
+                                           .catch( () =>  0 ) //departmentList.length == 0
   }
 
   setButtonLabel(label) {
